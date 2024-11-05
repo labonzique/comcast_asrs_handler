@@ -13,11 +13,11 @@ def main():
     logger = logging.getLogger(__name__)
     
     # Directories for saving PDFs and text files
-    pdf_save_directory = "./asr_pdfs"
-    msg_directory = "./mail_asrs"
+    pdf_save_directory = "./_asr_pdfs"
+    msg_directory = "_mail_asrs"
     txt_directory = "./tmp_txt"
     pdf_directory = "./tmp_pdf"
-
+    archive_directory = './_archive_pdf'
 
     # Initialize the FileManager with directories for saving files
     file_manager = FileManager(pdf_directory, txt_directory)
@@ -57,7 +57,7 @@ def main():
     logger.info("------Data preparation is complete------")
 
 
-    file_manager.create_archives(complete_data)
+    file_manager.create_archives(complete_data, base_directory=archive_directory)
     logger.info("------Documents archivation is complete------")
 
     # # Excel file

@@ -8,13 +8,13 @@ tmp_txt/
 
 venv/
 
-mail_asrs/*
+_mail_asrs/*
 
-!mail_asrs
+!_mail_asrs
 
-!mail_asrs/.gitkeep
+!_mail_asrs/.gitkeep
 
-asr_pdfs/
+_asr_pdfs/
 
 logs/
 
@@ -31,3 +31,4 @@ logs/
 txts/
 pdfs/
 archives/
+_archive_pdf/
