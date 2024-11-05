@@ -23,3 +23,7 @@ logs/
 *.xls
 *.xlsx
 *.xlsm
+
+**/*.pyc
+*.pyc
+/__pycache__

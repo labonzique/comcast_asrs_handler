@@ -27,7 +27,7 @@ class DataProcessor:
 
                 # Extract value after 'FA'
                 # fa_pattern = r"FA\s+(\d+)"
-                fa_pattern = r"FA\s*:?\s*(\d+)"
+                fa_pattern = r"FA\s*:?\s*(\d{8})"
                 fa_match = re.search(fa_pattern, text)
                 fa_value = fa_match.group(1) if fa_match else None
 
