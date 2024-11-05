@@ -108,8 +108,8 @@ class DataProcessor:
 
     def complete_data(self, data):
         prep_data = data.copy()
-        filtered_data = {}
         for item in prep_data:
+            filtered_data = {}
             try:
                 remaining_ofs = item['all_of'][:]
                 
