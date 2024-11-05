@@ -2,6 +2,8 @@ import os
 import logging
 import extract_msg as msg
 import pdfplumber
+import zipfile
+
 
 logger = logging.getLogger(__name__)
 
@@ -125,6 +127,47 @@ class FileManager:
             logger.info(f"All files cleared from directory: {directory}")
         except Exception as e:
             logger.error(f"Error clearing directory {directory}: {e}")
+
+
+    
+    def create_archives(self, data_list, base_directory="archives"):
+        """
+        Creates ZIP archives based on the provided list of dictionaries.
+        
+        :param data_list: List of dictionaries, each containing 'fa' and 'all_files' keys
+        :param file_directory: Directory where the PDF files are located (default is current directory)
+        """
+        os.makedirs(base_directory, exist_ok=True)
+        for item in data_list:
+            fa_value = item.get("fa")
+            all_files = item.get("all_files", [])
+            
+            if not fa_value or not all_files:
+                logger.info(f"Skipping entry with missing 'fa' or 'all_files': {item}")
+                continue
+
+            # Create an archive name and path
+            zip_filename = f"{fa_value}.zip"
+            zip_path = os.path.join(base_directory, zip_filename)
+
+            try:
+                with zipfile.ZipFile(zip_path, 'w') as zipf:
+                    for file_name in all_files:
+                        # Define the full path to the file
+                        file_path = os.path.join(self.pdf_save_directory, file_name) if self.pdf_save_directory else file_name
+                        
+                        # Add the file to the archive if it exists
+                        if os.path.exists(file_path) and file_path.endswith('.pdf'):
+                            zipf.write(file_path, arcname=file_name)
+                            logger.info(f"Added {file_name} to {zip_filename}")
+                        else:
+                            logger.info(f"File does not exist or is not a PDF: {file_name}")
+                
+                logger.info(f"ZIP file '{zip_filename}' created successfully at {zip_path}")
+            except Exception as e:
+                logger.error(f"Failed to create ZIP file '{zip_filename}': {e}")
+
+
 
     def clear_all_directories(self):
         """

@@ -50,13 +50,15 @@ def main():
     logger.info(processed_data)
     logger.info("------Completed OF data processing------")
 
-
     # Process OF data with deduplication and short code extraction
     # logger.info("------Preparing final cut------")
     complete_data = processor.complete_data(processed_data)
     logger.info(complete_data)
     logger.info("------Data preparation is complete------")
 
+
+    file_manager.create_archives(complete_data)
+    logger.info("------Documents archivation is complete------")
 
     # # Excel file
     exporter.export_and_open(complete_data)
