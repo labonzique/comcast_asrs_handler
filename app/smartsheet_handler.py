@@ -18,7 +18,7 @@ class SmartsheetClient:
         self.sheet_id = sheet_id
         self.column_ids = column_ids
 
-    def add_row_to_smartsheet(self, data: dict, pdf_directory: str):
+    def add_row_to_smartsheet(self, data: dict, pdf_directory: str = None ):
         """
         Adds a row to the Smartsheet and attaches PDFs if provided.
         

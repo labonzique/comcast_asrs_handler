@@ -1,6 +1,6 @@
 import logging
 import pandas as pd
-from config import Config
+from app.config import Config
 from utils.logging_config import setup_logging
 from app.file_management import FileManager
 from app.data_processing import DataProcessor
@@ -14,7 +14,7 @@ def main():
     
     # Directories for saving PDFs and text files
     pdf_save_directory = "./_asr_pdfs"
-    msg_directory = "_mail_asrs"
+    msg_directory = "./_mail_asrs"
     txt_directory = "./tmp_txt"
     pdf_directory = "./tmp_pdf"
     archive_directory = './_archive_pdf'

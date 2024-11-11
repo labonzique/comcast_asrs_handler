@@ -21,7 +21,7 @@ class DataProcessor:
                     text = file.read()
 
                 # Extract value starting with 'OF'
-                of_pattern = r"\bOF\w+\b"
+                of_pattern = r"\b[O0]F\w+\b"
                 of_match = re.search(of_pattern, text)
                 of_value = of_match.group(0) if of_match else None
 
