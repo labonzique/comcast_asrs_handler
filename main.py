@@ -1,5 +1,4 @@
 import logging
-import pandas as pd
 from app.config import Config
 from utils.logging_config import setup_logging
 from app.file_management import FileManager

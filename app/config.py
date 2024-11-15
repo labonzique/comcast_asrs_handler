@@ -16,3 +16,4 @@ class Config:
         'uni': int(os.getenv("UNI_COLUMN_ID"))
     }
     EXCEL_COLUMNS = ["of_short",  "fa", "date", "uni", "pon1", "pon2", "remarks", "all_files"]
+    
